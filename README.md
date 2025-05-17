@@ -29,18 +29,17 @@ nix run .#build
 
 ### `error: experimental Nix feature ... is disabled; use '--extra-experimental-features ...' to enable it`
 
-Nix の実験的な機能を有効にするために、`--extra-experimental-features` オプションを使用してください。
+`nix-command` と `flakes` が有効ではないかもしれません。\
+以下のコマンドを実行してください。
 
 ```sh
-nix run .#watch --extra-experimental-features nix-command --extra-experimental-features flakes
-# or
-nix run .#build --extra-experimental-features nix-command --extra-experimental-features flakes
+mkdir -p ~/.config/nix && echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 ```
 
 ### `error: path ‘/nix/store/...-source/flake.nix’ does not exist`
 
-`flake.nix` が Git で管理されていない場合、よく発生するエラーです。\
-`flake.nix` を Git で管理するために、以下のコマンドを実行してください。
+`flake.nix` が Git で管理されていないかもしれません。\
+`flake.nix` を Git で管理するため、以下のコマンドを実行してください。
 
 ```sh
 git add flake.nix
